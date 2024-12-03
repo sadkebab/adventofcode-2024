@@ -88,6 +88,9 @@ function* parseMulWithDoAndDont(lines: string[]): Generator<[number, number]> {
   }
 }
 
+/**
+ * A generator that yields the matches of a regex wrapped in a function.
+ */
 function* matchWrapper<T>(
   input: string,
   regex: RegExp,
