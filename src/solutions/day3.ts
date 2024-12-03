@@ -36,7 +36,7 @@ function* parseMul(lines: string[]): Generator<[number, number]> {
   }
 }
 
-type ParsedCommand =
+type ParsedInstruction =
   | {
       type: "mul";
       params: [number, number];
@@ -54,18 +54,18 @@ type ParsedCommand =
 function* parseMulWithDoAndDont(lines: string[]): Generator<[number, number]> {
   let active = true;
 
-  const toMul: (match: RegExpExecArray) => ParsedCommand = (match) => ({
+  const toMul: (match: RegExpExecArray) => ParsedInstruction = (match) => ({
     type: "mul",
     params: [Number(match[1]), Number(match[2])],
     index: match.index,
   });
 
-  const toDo: (match: RegExpExecArray) => ParsedCommand = (match) => ({
+  const toDo: (match: RegExpExecArray) => ParsedInstruction = (match) => ({
     type: "do",
     index: match.index,
   });
 
-  const toDont: (match: RegExpExecArray) => ParsedCommand = (match) => ({
+  const toDont: (match: RegExpExecArray) => ParsedInstruction = (match) => ({
     type: "dont",
     index: match.index,
   });
