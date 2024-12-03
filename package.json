@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "sample": "bun run src/index.ts ./data sample",
-    "full": "bun run src/index.ts ./data full"
+    "full": "bun run src/index.ts ./data full",
+    "test": "bun test test/**/*.test.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"
