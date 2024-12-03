@@ -56,11 +56,6 @@ function printResult(day: number, result: [number, number] | string) {
 
 async function runDay(day: number, target: string, mode: string) {
   try {
-    const fileExists = existsSync(
-      path.join(__dirname, `./solutions/day${day}.ts`)
-    );
-    console.log(`Day ${day} file exists: ${fileExists}`);
-
     const solution = (await import(
       path.join(__dirname, `./solutions/day${day}.ts`)
     )) as Solution;
@@ -75,7 +70,6 @@ async function runDay(day: number, target: string, mode: string) {
       return "Input file not found";
     }
 
-    console.error(error);
     return "No solution found";
   }
 }
