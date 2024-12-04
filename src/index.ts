@@ -1,10 +1,10 @@
 import { readFileSync } from "fs";
-import { run } from "./lib/runner";
+import { run } from "@sadkebab/run";
 import { args } from "./lib/args";
 import path from "path";
 import { range } from "lodash";
 import chalk from "chalk";
-import { existsSync } from "fs";
+
 type Solution = {
   solution: (lines: string[]) => [number, number];
 };
@@ -63,13 +63,14 @@ async function runDay(day: number, target: string, mode: string) {
     const lines = input.split("\n");
     return solution.solution(lines);
   } catch (error) {
-    if (
-      error instanceof Error &&
-      error.message.includes("No such file or directory")
-    ) {
-      return "Input file not found";
+    if (error instanceof Error) {
+      if (error.message.includes("No such file or directory")) {
+        return "Input file not found";
+      } else {
+        console.error(error);
+        return "Solution failed during execution";
+      }
     }
-
     return "No solution found";
   }
 }

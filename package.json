@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@effect/match": "^0.40.0",
+    "@sadkebab/run": "^0.0.2",
     "@types/lodash": "^4.17.13",
     "chalk": "^5.3.0",
     "lodash": "^4.17.21",
