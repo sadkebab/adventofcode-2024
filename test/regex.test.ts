@@ -4,7 +4,7 @@ import { regexMatchCount } from "../src/lib/regex";
 describe("regexMatchCount", () => {
   it("should count matches", () => {
     expect(
-      regexMatchCount(/xmas/i, "xmas", "samxmas", "xsa", "xamasx", "fa", "fo")
+      regexMatchCount(/xmas/g, "xmas", "samxmas", "xsa", "xamasx", "fa", "fo")
     ).toBe(2);
   });
 });
