@@ -6,7 +6,7 @@ import { range } from "lodash";
 import chalk from "chalk";
 
 type Solution = {
-  solution: (lines: string[]) => [number, number];
+  solution: (lines: string[]) => [number, number] | Promise<[number, number]>;
 };
 
 run(
@@ -61,7 +61,7 @@ async function runDay(day: number, target: string, mode: string) {
     )) as Solution;
     const input = readFileSync(path.join(target, `day${day}/${mode}`), "utf8");
     const lines = input.split("\n");
-    return solution.solution(lines);
+    return await solution.solution(lines);
   } catch (error) {
     if (error instanceof Error) {
       if (error.message.includes("No such file or directory")) {
